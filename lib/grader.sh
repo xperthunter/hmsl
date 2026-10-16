@@ -1,10 +1,6 @@
-#!/usr/bin/env bash
 
-LAB_NAME=$1
-
-LAB="$HOME/ciss100/$LAB_NAME"
-
-score=0 possible=0
+score=0
+possible=0
 
 check() {
 	local points="$1"
@@ -22,9 +18,3 @@ check() {
 			"$description" "$points"
 	fi
 }
-
-echo
-echo "CISS100 - LAB 03 GRADER"
-echo "======================="
-
-check 2 "lab03 directory exists" test -d "$LAB"

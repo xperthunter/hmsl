@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+LAB=$1
+
+echo "${HMSL}"
+echo "${HMSL}/lib/grader.sh"
+echo "${HMSL}/labs/${LAB}/${LAB}.sh"
+
+#source "${HMSL}/lib/grader.sh"
+source "${HMSL}/labs/${LAB}/${LAB}.sh"

@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-LAB_NAME=$1
+LAB=$1
+
+source "${HMSL}/lib/grader.sh"
+source "${HMSL}/labs/${LAB}/${LAB}.sh"
+
+
+exit
+
 LAB="$HOME/ciss100/$LAB_NAME"
 
 score=0 possible=0
