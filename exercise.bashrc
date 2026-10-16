@@ -1,0 +1,13 @@
+export HISTFILE="$EXERCISE_HISTFILE"
+
+export HISTFILE=10000
+export HISTFILESIZE=10000
+
+unset HISTCONTROL
+unset HISTIGNORE
+
+shopt -s histappend
+
+PROMPT_COMMAND='history -a'
+
+
