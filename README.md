@@ -6,18 +6,17 @@ hmsl is a learning management system to teach students Linux and Bash scripting.
 AI is used in the development of the ideas and code for hmsl.  
 
 ## Project Goals
-hmsl seeks to immerse students in Linux. Student assessment is built into the shell as they are learning shell and bash scripting. This immersion further motivates the utility of Linux/Unix in building their own future projects. 
+hmsl seeks to immerse students in Linux. Student assessment is built into the shell as they are learning shell and bash scripting. 
 
 hmsl supports iterative design and learning. hmsl score allows students to frequently score their work. This suports the iterative design process in software design (and many other fields). hmsl affords students with greater transparency in how they are assessed. 
 
 hmsl further re-enforces the importance of repeated practice. hmsl reset will clear students' workspaces so students can re-do labs testing their understanding. Students may receive help/assistance from many sources (instructor, peers, LLMs), but students can choose to still engage in self-directed practice. 
 
 ## Command Line Interface
-hmsl will behave similarly to git. There are three commands exposed to students. 
+hmsl will behave similarly to git. There are two commands exposed to students. 
 
 1. hmsl score [lab##]
 2. hmsl reset [lab##]
-3. hmsl submit [lab##]
 
 For course administator, hmsl exposes the following additional commands. 
 
@@ -31,13 +30,10 @@ For course administator, hmsl exposes the following additional commands.
 	|-- bin/
 			hmsl
 	|-- lib/
-	|		grading.sh
-	|		exercises.sh
-	|		common.sh
+	|		scorelib.sh
+	|		resetlib.sh
 	|-- commands/
-	|		grade.sh
-	|		exercise.sh
-	|		lesson.sh
+	|		score.sh
 	|		reset.sh
 	|
 
