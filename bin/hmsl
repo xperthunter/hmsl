@@ -4,11 +4,11 @@ COMMAND="$1"
 shift
 
 case "$COMMAND" in
-	grade ) source commands/grade.sh
-			;;
+	score ) source commands/score.sh
+	;;
 	reset ) source commands/reset.sh
-			;;
+	;;
 	*     ) echo "Unknown command: $COMMAND"
-			exit 1
-			;;
+		exit 1
+	;;
 esac
