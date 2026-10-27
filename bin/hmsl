@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+COMMAND="$1"
+shift
+
+case "$COMMAND" in
+	grade ) source commands/grade.sh
+			;;
+	reset ) source commands/reset.sh
+			;;
+	*     ) echo "Unknown command: $COMMAND"
+			exit 1
+			;;
+esac
