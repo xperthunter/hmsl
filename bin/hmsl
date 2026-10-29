@@ -4,9 +4,14 @@ COMMAND="$1"
 shift
 
 case "$COMMAND" in
-	score ) source commands/score.sh
+	score ) 
+		lab="$1"
+		source commands/score.sh
+		source "labs/${lab}.sh"
 	;;
-	reset ) source commands/reset.sh
+	reset ) 
+		lab="$1"
+		source commands/reset.sh
 	;;
 	*     ) echo "Unknown command: $COMMAND"
 		exit 1

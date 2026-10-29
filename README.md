@@ -26,49 +26,25 @@ For course administator, hmsl exposes the following additional commands.
 
 ## Project Organization
 
-| hmsl - /
-	|-- bin/
-			hmsl
-	|-- lib/
-	|		scorelib.sh
-	|		resetlib.sh
-	|-- commands/
-	|		score.sh
-	|		reset.sh
-	|
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+| hmsl
+	bin/
+		hmsl = hmsl caller, project entry point
+		hmsl caller sources the necessary lib and requested lab
+	lib/
+		score.sh = library for scoring
+			- contains reusable code to check student work
+		reset.sh
+			- contains reusable code to delete/reset students env
+			to start re-doing work
+	labs/
+		lab01/
+			lab01\_rubric.sh -- lab01 rubric
+			lab01\_reset.sh -- script to reset student work
+		lab02/
+			...
+		lab03/
+			...
+		...
+	tests/
+		testing for hmsl functions
 
