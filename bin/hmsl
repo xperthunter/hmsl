@@ -1,19 +1,64 @@
 #!/usr/bin/env bash
 
+CALLER="$(readlink -f "$0")"
+HMSL="$(cd "$(dirname "$CALLER")/.." && pwd)"
+
+usage()
+{
+	cat << EOF
+==================================================
+ HMSL - HVCC Learning Management System for Linux
+==================================================
+
+Usage:
+	hmsl <subcommand> [arguments]
+
+Subcommands:
+	score <lab>  Grade a lab
+	reset <lab>  Reset a lab to do more practice
+	help         Show this help message
+
+Examples:
+	hmsl score lab01
+	hmsl reset lab01
+
+EOF
+}
+
+check_lab()
+{
+	local lab="$1"
+	if [[ ! -f "${HMSL}/labs/${lab}/${lab}.sh" ]]; then
+		echo "Unknown lab: $lab"
+		exit 1
+	fi
+}
+
+if [[ $# -eq 0 ]]; then
+	usage
+	exit 1
+fi
+
 COMMAND="$1"
 shift
 
 case "$COMMAND" in
 	score ) 
 		lab="$1"
-		source commands/score.sh
-		source "labs/${lab}.sh"
+		check_lab "$lab"
+		source "${HMSL}/lib/score.sh"
+		#source "labs/${lab}.sh"
 	;;
 	reset ) 
 		lab="$1"
-		source commands/reset.sh
+		check_lab "$lab"
+		source "${HMSL}/lib/reset.sh"
 	;;
-	*     ) echo "Unknown command: $COMMAND"
+	help|-h|--help|"" )
+		usage
+		exit 0
+	;;
+	* ) echo "Unknown command: $COMMAND"
 		exit 1
 	;;
 esac
