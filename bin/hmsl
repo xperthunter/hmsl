@@ -47,7 +47,7 @@ case "$COMMAND" in
 		lab="$1"
 		check_lab "$lab"
 		source "${HMSL}/lib/score.sh"
-		#source "labs/${lab}.sh"
+		source "${HMSL}/labs/${lab}/${lab}.sh"
 	;;
 	reset ) 
 		lab="$1"
