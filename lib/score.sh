@@ -6,7 +6,7 @@ check() {
 	local points="$1"
 	local description="$2"
 	shift 2
-
+	echo "$@"
 	possible=$((possible + points))
 
 	if "$@" >/dev/null 2>&1; then
@@ -17,6 +17,7 @@ check() {
 		printf "[FAIL] %-45s 0/%d\n" \
 			"$description" "$points"
 	fi
+	echo "$score"
 }
 
 history_contains()
@@ -60,9 +61,10 @@ history_contains_since_reset()
 	local lab="$1"
 	local pattern="$2"
 
-	echo "PATTERN: $pattern"
+	#echo "PATTERN: $pattern"
 	history_since_reset "$lab" |
-	grep -Eq "[[:space:]]+$pattern$"
+	grep -Eq "^[[:space:]]*[0-9]+[[:space:]]+$pattern$"
+	#echo $?
 }
 
 require_command()
@@ -71,12 +73,15 @@ require_command()
 	local description="$2"
 	local lab="$3"
 	local command="$4"
-	echo "COMMAND: $command"
+	echo "points: $points"
+	echo "descri: $description"
+	echo "lab:    $lab"
+	echo "command: $command"
 	check \
 		"$points" \
 		"$description" \
-		history_contains_since_reset \
-		"$lab" \
+		history_contains_since_reset\
+		"$lab"\
 		"$command"
 }
 

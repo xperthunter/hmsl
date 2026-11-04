@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+#set -x
+
 echo
 echo "CISS100 LAB01"
 echo "============="
 echo 
 
-require_command 1 \
-	"ran date command" \
-	date
+history
+
+require_command 1 "ran date command" lab01 date
 
 finish
