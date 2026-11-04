@@ -21,6 +21,8 @@ Subcommands:
 Examples:
 	hmsl score lab01
 	hmsl reset lab01
+	hmsl help
+	hmsl test
 
 EOF
 }
@@ -57,6 +59,8 @@ case "$COMMAND" in
 	help|-h|--help|"" )
 		usage
 		exit 0
+	;;
+	test ) source "${HMSL}/tests/run_tests.sh"
 	;;
 	* ) echo "Unknown command: $COMMAND"
 		exit 1
