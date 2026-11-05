@@ -14,11 +14,13 @@ Usage:
 	hmsl <subcommand> [arguments]
 
 Subcommands:
-	score <lab>  Grade a lab
-	reset <lab>  Reset a lab to do more practice
-	help         Show this help message
+	exercise <lab> Start working on lab <lab>
+	score <lab>    Grade a lab
+	reset <lab>    Reset a lab to do more practice
+	help           Show this help message
 
 Examples:
+	hmsl exercise lab01
 	hmsl score lab01
 	hmsl reset lab01
 	hmsl help
@@ -45,6 +47,14 @@ COMMAND="$1"
 shift
 
 case "$COMMAND" in
+	exercise )
+		lab="$1"
+		check_lab "$lab"
+
+		source "${HMSL}/lib/exercise.sh"
+
+		exercise "$lab"
+	;;
 	score ) 
 		lab="$1"
 		check_lab "$lab"

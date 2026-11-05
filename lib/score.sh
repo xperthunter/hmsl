@@ -22,49 +22,10 @@ check() {
 
 history_contains()
 {
-	local pattern="$1"
-
-	history | grep -Eq "$pattern"
-}
-
-last_reset()
-{
-	local lab="$1"
-
-	history |
-	grep -E "[[:space:]]+hmsl reset $lab$" |
-	tail -n 1 |
-	awk '{print $1}'
-}
-
-history_since_reset()
-{
-	local lab="$1"
-	
-	local reset
-
-	reset="$(last_reset "$lab")"
-
-	if [[ -z "$reset" ]]; then
-		history
-		return
-	fi
-
-	echo "$reset"
-
-	history |
-	awk -v start="$reset" '$1 > start'
-}
-
-history_contains_since_reset()
-{
 	local lab="$1"
 	local pattern="$2"
 
-	#echo "PATTERN: $pattern"
-	history_since_reset "$lab" |
-	grep -Eq "^[[:space:]]*[0-9]+[[:space:]]+$pattern$"
-	#echo $?
+	grep -Eq "$pattern" "$HOME/.hmsl/history/${lab}.history"
 }
 
 require_command()
@@ -80,9 +41,9 @@ require_command()
 	check \
 		"$points" \
 		"$description" \
-		history_contains_since_reset\
+		history_contains \
 		"$lab"\
-		"$command"
+		"^${command}$"
 }
 
 finish()
