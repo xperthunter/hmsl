@@ -2,6 +2,8 @@
 
 echo "Running HMSL tests"
 
-source "./test_hmsl_caller.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+source "${SCRIPT_DIR}/test_hmsl_caller.sh"
 
 echo "Done."

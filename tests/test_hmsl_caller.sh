@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-HMSL_BIN="../bin/hmsl"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+HMSL_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+HMSL_BIN="${HMSL_ROOT}/bin/hmsl"
 
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -48,55 +51,106 @@ assert_contains()
 }
 
 # Test 1: No arguments
-output="$("$HMSL_BIN" 2>&1)"
-status=$?
-
-assert_exit_code 1 "$status" "No arguments returns exit code 1"
+test_no_args()
+{
+	output="$("$HMSL_BIN" 2>&1)"
+	status=$?
+	
+	assert_exit_code 1 "$status" "No arguments returns exit code 1"
+}
+test_no_args
 
 # Test 2: Help command
-output="$("$HMSL_BIN" help 2>&1)"
-status=$?
-
-assert_exit_code 0 "$status" "Help returns exit code 0"
-
-assert_contains "$output" "Usage:" "Help displays usage"
+test_help()
+{
+	output="$("$HMSL_BIN" help 2>&1)"
+	status=$?
+	
+	assert_exit_code 0 "$status" "Help returns exit code 0"
+	
+	assert_contains "$output" "Usage:" "Help displays usage"
+}
+test_help
 
 # Test 3: -h switch
-output="$("$HMSL_BIN" -h 2>&1)"
-status=$?
+test_help_switch(){
+	output="$("$HMSL_BIN" -h 2>&1)"
+	status=$?
+	
+	assert_exit_code 0 "$status" "-h returns exit code 0"
+	
+	assert_contains "$output" "Usage:" "-h displays usage"
+}
+test_help_switch
 
-assert_exit_code 0 "$status" "-h returns exit code 0"
+# Test 4: Unknown sub-command
+test_unk_subcmd()
+{
+	output="$("$HMSL_BIN" pizza 2>&1)"
+	status=$?
+	
+	assert_exit_code 1 "$status" "Unknown command returns exit code 1"
+	
+	assert_contains "$output" "Unknown command" "Unknown command message displayed"
+}
+test_unk_subcmd
 
-assert_contains "$output" "Usage:" "-h displays usage"
+# Test 5: Missing lab name for score
+test_missing_lab_score()
+{
+	output="$("$HMSL_BIN" score 2>&1)"
+	status=$?
+	
+	assert_exit_code 1 "$status" "Missing lab returns exit code 1 for score"
+	
+	assert_contains "$output" "Missing lab name." "Missing lab name error display for score"
+}
+test_missing_lab_score
 
-# Test 4: Unknown command
-output="$("$HMSL_BIN" pizza 2>&1)"
-status=$?
+# Test 6: Missing lab name for exercise
+test_missing_lab_exercise()
+{
+	output="$("$HMSL_BIN" exercise 2>&1)"
+	status=$?
+	
+	assert_exit_code 1 "$status" "Missing lab returns exit code 1 for exercise"
+	
+	assert_contains "$output" "Missing lab name." "Missing lab name error message for exercise"
+}
+test_missing_lab_exercise
 
-assert_exit_code 1 "$status" "Unknown command returns exit code 1"
+# Test 7: Unknown lab for score
+test_unk_lab_score()
+{
+	output="$("$HMSL_BIN" score lab999 2>&1)"
+	status=$?
+	
+	assert_exit_code 1 "$status" "Unknown lab returns exit code 1"
+	
+	assert_contains "$output" "Unknown lab" "Unknown lab message displayed"
+}
+test_unk_lab_score
 
-assert_contains "$output" "Unknown command" "Unknown command message displayed"
+# Test 8: Unknown lab for exercise
+test_unk_lab_exercise()
+{
+	output="$("$HMSL_BIN" exercise exercise9992>&1)"
+	status=$?
+	
+	assert_exit_code 1 "$status" "Unknown lab returns exit code 1"
+	
+	assert_contains "$output" "Unknown lab" "Unknown lab message displayed for exercise"
+}
+test_unk_lab_exercise
 
-
-# Test 5: Missing lab name
-output="$("$HMSL_BIN" score 2>&1)"
-status=$?
-
-assert_exit_code 1 "$status" "Missing lab returns exit code 1"
-
-# Test 6: Unknown lab
-output="$("$HMSL_BIN" score lab999 2>&1)"
-status=$?
-
-assert_exit_code 1 "$status" "Unknown lab returns exit code 1"
-
-assert_contains "$output" "Unknown lab" "Unknown lab message displayed"
-
-# Test 7: Existing lab
-output="$("$HMSL_BIN" score lab01 2>&1)"
-status=$?
-
-assert_exit_code 0 "$status" "Existing lab laods successfully"
+# Test 9: Existing lab for
+test_existing_lab_score()
+{
+	output="$("$HMSL_BIN" score lab01 2>&1)"
+	status=$?
+	
+	assert_exit_code 0 "$status" "Existing lab laods successfully"
+}
 
 echo
 echo "==================="

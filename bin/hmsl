@@ -32,6 +32,12 @@ EOF
 check_lab()
 {
 	local lab="$1"
+	
+	if [[ -z "$lab" ]]; then
+		echo "Missing lab name."
+		exit 1
+	fi
+	
 	if [[ ! -f "${HMSL}/labs/${lab}/${lab}.sh" ]]; then
 		echo "Unknown lab: $lab"
 		exit 1
@@ -50,9 +56,7 @@ case "$COMMAND" in
 	exercise )
 		lab="$1"
 		check_lab "$lab"
-
 		source "${HMSL}/lib/exercise.sh"
-
 		exercise "$lab"
 	;;
 	score ) 
