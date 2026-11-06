@@ -1,4 +1,7 @@
 
+CALLER="$(readlink -f "$0")"
+HMSL="$(cd "$(dirname "$CALLER")/.." && pwd)"
+
 exercise()
 {
 	local lab="$1"
@@ -9,7 +12,7 @@ exercise()
 	mkdir -p "$HOME/.hmsl/history"
 
 	touch "$HMSL_HISTORY"
-
+	
 	bash \
 		--rcfile "${HMSL}/lib/exercise.bashrc" \
 		-i
