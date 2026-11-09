@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+echo "here"
 CALLER="$(readlink -f "$0")"
 HMSL="$(cd "$(dirname "$CALLER")/.." && pwd)"
 
