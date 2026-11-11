@@ -12,6 +12,6 @@ export HISTFILESIZE=1000
 
 shopt -s histappend
 
-PROMPT_COMMAND='history -a'
+PROMPT_COMMAND='history -w'
 
 PS1='\[\033[1;36m\][hmsl-${HMSL_LAB}]\[\033[0m\] \u@\h:\W\$ '
