@@ -6,7 +6,6 @@ check() {
 	local points="$1"
 	local description="$2"
 	shift 2
-	echo "$@"
 	possible=$((possible + points))
 
 	if "$@" >/dev/null 2>&1; then
@@ -17,7 +16,6 @@ check() {
 		printf "[FAIL] %-45s 0/%d\n" \
 			"$description" "$points"
 	fi
-	echo "$score"
 }
 
 history_contains()
@@ -34,10 +32,6 @@ require_command()
 	local description="$2"
 	local lab="$3"
 	local command="$4"
-	echo "points: $points"
-	echo "descri: $description"
-	echo "lab:    $lab"
-	echo "command: $command"
 	check \
 		"$points" \
 		"$description" \
