@@ -18,14 +18,6 @@ exercise()
 		-i
 	
 	echo
-	echo "================================="
-	echo " HMSL Exercise Summary"
-	echo "================================="
-	echo 
-	
-	hmsl score "$lab"
-	
-	echo
 	echo "To practice this exercise again:"
 	echo 
 	echo "	hmsl reset $lab"
