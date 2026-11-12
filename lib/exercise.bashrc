@@ -64,7 +64,7 @@ printf "\n"
 printf "Commands\n"
 printf "	score	Show progress\n"
 printf "	help 	Show objectives\n"
-printf "	done	Exit exercise\n"
+printf "	finish	Exit exercise\n"
 printf "\n"
 
 export HISTFILE="$HMSL_HISTORY"
@@ -77,43 +77,6 @@ shopt -s histappend
 PROMPT_COMMAND='history -w'
 
 PS1='\[\033[1;36m\][hmsl-${HMSL_LAB} ${HMSL_SCORE}/${HMSL_POSSIBLE}]\[\033[0m\] \u@\h:\W\$ '
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

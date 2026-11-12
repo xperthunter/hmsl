@@ -48,3 +48,9 @@ For course administator, hmsl exposes the following additional commands.
 	tests/
 		testing for hmsl functions
 
+
+command to grab repo contents
+git ls-files | grep -vi '^LICENSE' | xargs awk 'FNR==1 {print "\n--- " FILENAME " ---"} {print}'
+
+
+

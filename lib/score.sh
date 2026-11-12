@@ -20,23 +20,20 @@ check() {
 
 history_contains()
 {
-	local lab="$1"
-	local pattern="$2"
+	local pattern="$1"
 
-	grep -Eq "$pattern" "$HOME/.hmsl/history/${lab}.history"
+	grep -Eq "$pattern" "$HOME/.hmsl/history/${HMSL_LAB}.history"
 }
 
 require_command()
 {
 	local points="$1"
 	local description="$2"
-	local lab="$3"
-	local command="$4"
+	local command="$3"
 	check \
 		"$points" \
 		"$description" \
 		history_contains \
-		"$lab"\
 		"^${command}$"
 }
 
