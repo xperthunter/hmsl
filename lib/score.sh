@@ -40,7 +40,7 @@ require_command()
 		"^${command}$"
 }
 
-finish()
+summary()
 {
 	echo
 	echo "=============================="

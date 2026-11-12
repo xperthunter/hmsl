@@ -18,4 +18,4 @@ require_command 1 "ran ls -l" lab01 "ls -l"
 
 require_command 1 "ran ls -la or ls -al" lab01 "ls[[:space:]]+-(la|al)"
 
-finish
+summary

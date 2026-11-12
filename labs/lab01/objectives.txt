@@ -1,0 +1,2 @@
+Practice executing commands
+Practice with ls options

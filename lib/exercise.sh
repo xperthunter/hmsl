@@ -5,7 +5,7 @@ HMSL="$(cd "$(dirname "$CALLER")/.." && pwd)"
 exercise()
 {
 	local lab="$1"
-
+	export HMSL="$HMSL"
 	export HMSL_LAB="$lab"
 	export HMSL_HISTORY="$HOME/.hmsl/history/${lab}.history"
 
@@ -16,4 +16,19 @@ exercise()
 	bash \
 		--rcfile "${HMSL}/lib/exercise.bashrc" \
 		-i
+	
+	echo
+	echo "================================="
+	echo " HMSL Exercise Summary"
+	echo "================================="
+	echo 
+	
+	hmsl score "$lab"
+	
+	echo
+	echo "To practice this exercise again:"
+	echo 
+	echo "	hmsl reset $lab"
+	echo "	hmsl exercise $lab"
+	
 }
