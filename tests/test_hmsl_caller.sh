@@ -134,7 +134,7 @@ test_unk_lab_score
 # Test 8: Unknown lab for exercise
 test_unk_lab_exercise()
 {
-	output="$("$HMSL_BIN" exercise exercise9992>&1)"
+	output="$("$HMSL_BIN" exercise exercise999 2>&1)"
 	status=$?
 	
 	assert_exit_code 1 "$status" "Unknown lab returns exit code 1"
@@ -149,8 +149,9 @@ test_existing_lab_score()
 	output="$("$HMSL_BIN" score lab01 2>&1)"
 	status=$?
 	
-	assert_exit_code 0 "$status" "Existing lab laods successfully"
+	assert_exit_code 0 "$status" "Existing lab loads successfully"
 }
+test_existing_lab_score
 
 echo
 echo "==================="
