@@ -1,7 +1,4 @@
 
-CALLER="$(readlink -f "$0")"
-HMSL="$(cd "$(dirname "$CALLER")/.." && pwd)"
-
 exercise()
 {
 	local lab="$1"

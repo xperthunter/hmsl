@@ -45,6 +45,19 @@ assert_contains()
 	fi
 }
 
+assert_equals()
+{
+	local expected="$1"
+	local actual="$2"
+	local message="$3"
+
+	if [[ "$expected" == "$actual" ]]; then
+		pass "$message"
+	else
+		fail "$message (expected '$expected' got '$actual')"
+	fi
+}
+
 test_summary()
 {
 	echo
