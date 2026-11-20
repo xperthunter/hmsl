@@ -31,7 +31,7 @@ test_exercise_setup_sets_history_path
 
 test_exercise_setup_creates_history_dir()
 {
-	rm -rf "$HOME/.hmsl"
+	setup_test_home
 
 	exercise_setup "lab01"
 
@@ -40,12 +40,14 @@ test_exercise_setup_creates_history_dir()
 	else
 		fail "history directory created"
 	fi
+
+	cleanup_test_home
 }
 test_exercise_setup_creates_history_dir
 
 test_exercise_setup_creates_history_file()
 {
-	rm -rf "$HOME/.hmsl"
+	setup_test_home
 
 	exercise_setup "lab01"
 
@@ -54,6 +56,8 @@ test_exercise_setup_creates_history_file()
 	else
 		fail "history file created"
 	fi
+
+	cleanup_test_home
 }
 test_exercise_setup_creates_history_file
 

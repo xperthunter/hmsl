@@ -9,6 +9,8 @@ source "${HMSL_ROOT}/lib/score.sh"
 
 export HMSL_LAB="lab_test"
 
+setup_test_home
+
 mkdir -p "$HOME/.hmsl/history"
 
 cat > "$HOME/.hmsl/history/lab_test.history" << EOF
@@ -127,5 +129,7 @@ test_summary_output()
 		"summary displays score"
 }
 test_summary_output
+
+cleanup_test_home
 
 test_summary

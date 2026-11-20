@@ -19,6 +19,11 @@ echo "===  Testing HMSL Score   ==="
 echo "-----------------------------"
 source "${SCRIPT_DIR}/test_score.sh"
 
+echo
+echo "=== Testing HMSL Reset ==="
+echo "--------------------------"
+source "${SCRIPT_DIR}/test_reset.sh"
+
 
 echo 
 echo "Done."

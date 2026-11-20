@@ -58,6 +58,20 @@ assert_equals()
 	fi
 }
 
+setup_test_home()
+{
+	TEST_HOME="$(mktemp -d)"
+	ORIGINAL_HOME="$HOME"
+
+	export HOME="$TEST_HOME"
+}
+
+cleanup_test_home()
+{
+	export HOME="$ORIGINAL_HOME"
+	rm -rf "$TEST_HOME"
+}
+
 test_summary()
 {
 	echo
