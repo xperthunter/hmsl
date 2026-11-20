@@ -42,7 +42,7 @@ test_history_contains_regex()
 	if history_contains "^ls.*$"; then
 		pass "history_contains supports regex"
 	else
-		pass "history_contains supports regex"
+		fail "history_contains supports regex"
 	fi
 }
 test_history_contains_regex
