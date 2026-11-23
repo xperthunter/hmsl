@@ -24,6 +24,11 @@ echo "=== Testing HMSL Reset ==="
 echo "--------------------------"
 source "${SCRIPT_DIR}/test_reset.sh"
 
+echo
+echo "=== Testing HMSL exercise.bashrc ==="
+echo "------------------------------------"
+source "${SCRIPT_DIR}/test_exercisebashrc.sh"
+
 
 echo 
 echo "Done."

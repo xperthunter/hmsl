@@ -50,33 +50,32 @@ finish()
 	exit
 }
 
-
-
-printf "\n"
-printf "===================================\n"
-printf " HMSL Exercise %s\n" "$HMSL_LAB"
-printf "===================================\n"
-printf "\n"
-
-help
-
-printf "\n"
-printf "Commands\n"
-printf "	score	Show progress\n"
-printf "	help 	Show objectives\n"
-printf "	finish	Exit exercise\n"
-printf "\n"
-
-export HISTFILE="$HMSL_HISTORY"
-
-export HISTSIZE=1000
-export HISTFILESIZE=1000
-
-shopt -s histappend
-
-PROMPT_COMMAND='history -w'
-
-PS1='\[\033[1;36m\][hmsl-${HMSL_LAB} ${HMSL_SCORE}/${HMSL_POSSIBLE}]\[\033[0m\] \u@\h:\W\$ '
-
-
-
+exercise_shell_init()
+{
+	printf "\n"
+	printf "===================================\n"
+	printf " HMSL Exercise %s\n" "$HMSL_LAB"
+	printf "===================================\n"
+	printf "\n"
+	
+	help
+	
+	printf "\n"
+	printf "Commands\n"
+	printf "	score	Show progress\n"
+	printf "	help 	Show objectives\n"
+	printf "	finish	Exit exercise\n"
+	printf "\n"
+	
+	export HISTFILE="$HMSL_HISTORY"
+	
+	export HISTSIZE=1000
+	export HISTFILESIZE=1000
+	
+	shopt -s histappend
+	
+	PROMPT_COMMAND='history -w'
+	
+	PS1='\[\033[1;36m\][hmsl-${HMSL_LAB} ${HMSL_SCORE}/${HMSL_POSSIBLE}]\[\033[0m\] \u@\h:\W\$ '
+}
+exercise_shell_init
