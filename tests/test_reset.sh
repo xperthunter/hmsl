@@ -39,9 +39,28 @@ test_reset_history_clears_file()
 		ls
 		pwd
 	EOF
+
+	reset_history "lab01"
+
+	if [[ ! -s "$HOME/.hmsl/history/lab01.history" ]]; then
+		pass "reset_history clears history file"
+	else
+		fail "reset_history clears history file"
+	fi
 	
-
+	cleanup_test_home
 }
+test_reset_history_clears_file
 
+test_reset_lab_message()
+{
+	output="$(reset_lab lab01)"
+
+	assert_contains \
+		"$output" \
+		"lab01 reset successfully" \
+		"reset_lab prints success message"
+}
+test_reset_lab_message
 
 test_summary
