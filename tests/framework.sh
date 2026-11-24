@@ -75,9 +75,6 @@ cleanup_test_home()
 test_summary()
 {
 	echo
-	echo "==================="
-	echo " HMSL TEST SUMMARY "
-	echo "==================="
 
 	if [[ "$FAIL_COUNT" -eq 0 ]]; then
 		printf "${GREEN}✓ All tests passed (%d)\n${NC}" "$PASS_COUNT"
