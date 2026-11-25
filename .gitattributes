@@ -1,5 +1,5 @@
 * text=auto
 
-*.sh test eol=lf
+*.sh text eol=lf
 *.bashrc text eol=lf
 *.md text eol=lf

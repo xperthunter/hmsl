@@ -39,7 +39,7 @@ test_score_extracts_points()
 
 	export HMSL="$(mktemp -d)"
 	export HMSL_LAB="testlab"
-	export HMLS_HISTORY="$HOME/.hmsl/history/testlab.history"
+	export HMSL_HISTORY="$HOME/.hmsl/history/testlab.history"
 
 	mkdir -p "$HMSL/labs/testlab"
 	mkdir -p "$HOME/.hmsl/history"

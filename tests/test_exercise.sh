@@ -9,23 +9,31 @@ source "${HMSL_ROOT}/lib/exercise.sh"
 
 test_exercise_setup_sets_lab()
 {
+	setup_test_home
+	
 	exercise_setup "lab01"
-
+	
 	assert_equals \
 		"lab01" \
 		"$HMSL_LAB" \
 		"exercise_setup sets HMSL_LAB"
+	
+	cleanup_test_home
 }
 test_exercise_setup_sets_lab
 
 test_exercise_setup_sets_history_path()
 {
-	exercise_setup "lab01"
+	setup_test_home
 
+	exercise_setup "lab01"
+	
 	assert_equals \
 		"$HOME/.hmsl/history/lab01.history" \
 		"$HMSL_HISTORY" \
 		"exercise_setup sets HMSL_HISTORY"
+	
+	cleanup_test_home
 }
 test_exercise_setup_sets_history_path
 

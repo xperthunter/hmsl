@@ -1,3 +1,4 @@
+export $HMSL
 
 exercise_setup()
 {
